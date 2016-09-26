@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ASP.NET.Models;
 
 namespace ASP.NET.Controllers
 {
@@ -25,6 +26,12 @@ namespace ASP.NET.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Produkty()
+        {
+            var produkt = new Produkt() { nazwa = "Mąka" };
+            return View(produkt);
+            
         }
     }
 }

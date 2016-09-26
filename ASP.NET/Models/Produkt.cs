@@ -5,13 +5,9 @@ using System.Web;
 
 namespace ASP.NET.Models
 {
-    public class Movie
+    public class Produkt
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Id { set; get; }
+        public string nazwa { set; get; }
     }
-
-    // /movies/random
-
 }
-
