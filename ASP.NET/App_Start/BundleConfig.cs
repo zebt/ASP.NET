@@ -25,6 +25,7 @@ namespace ASP.NET
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
+                      "~/Content/Custom.min.css",
                       "~/Content/site.css"));
         }
     }

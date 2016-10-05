@@ -39,16 +39,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -156,37 +172,112 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CustomerController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\KsiazkiController.cs" />
     <Compile Include="Controllers\ProduktyController.cs" />
+    <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610032321360_init.cs" />
+    <Compile Include="Migrations\201610032321360_init.Designer.cs">
+      <DependentUpon>201610032321360_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610032324169_DodanieNumeruDoModelu.cs" />
+    <Compile Include="Migrations\201610032324169_DodanieNumeruDoModelu.Designer.cs">
+      <DependentUpon>201610032324169_DodanieNumeruDoModelu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610032341383_poprawki-w-modelu-czlonkowstwo.cs" />
+    <Compile Include="Migrations\201610032341383_poprawki-w-modelu-czlonkowstwo.Designer.cs">
+      <DependentUpon>201610032341383_poprawki-w-modelu-czlonkowstwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610040900371_testowy-komentarz-danych-modelu.cs" />
+    <Compile Include="Migrations\201610040900371_testowy-komentarz-danych-modelu.Designer.cs">
+      <DependentUpon>201610040900371_testowy-komentarz-danych-modelu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610040919550_przykladowe-dane.cs" />
+    <Compile Include="Migrations\201610040919550_przykladowe-dane.Designer.cs">
+      <DependentUpon>201610040919550_przykladowe-dane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610040944570_testowe-dane-2.cs" />
+    <Compile Include="Migrations\201610040944570_testowe-dane-2.Designer.cs">
+      <DependentUpon>201610040944570_testowe-dane-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041010338_dodanie-nowych-pol-customer.cs" />
+    <Compile Include="Migrations\201610041010338_dodanie-nowych-pol-customer.Designer.cs">
+      <DependentUpon>201610041010338_dodanie-nowych-pol-customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041057421_DodanieWyrazeniaRegularnegoDoImieniaKlienta.cs" />
+    <Compile Include="Migrations\201610041057421_DodanieWyrazeniaRegularnegoDoImieniaKlienta.Designer.cs">
+      <DependentUpon>201610041057421_DodanieWyrazeniaRegularnegoDoImieniaKlienta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041103158_PoprawaWyrazenia.cs" />
+    <Compile Include="Migrations\201610041103158_PoprawaWyrazenia.Designer.cs">
+      <DependentUpon>201610041103158_PoprawaWyrazenia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041132312_wyrazenie-regularne.cs" />
+    <Compile Include="Migrations\201610041132312_wyrazenie-regularne.Designer.cs">
+      <DependentUpon>201610041132312_wyrazenie-regularne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041210235_poprawa.cs" />
+    <Compile Include="Migrations\201610041210235_poprawa.Designer.cs">
+      <DependentUpon>201610041210235_poprawa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041245434_test.cs" />
+    <Compile Include="Migrations\201610041245434_test.Designer.cs">
+      <DependentUpon>201610041245434_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041406370_ksiazka2.cs" />
+    <Compile Include="Migrations\201610041406370_ksiazka2.Designer.cs">
+      <DependentUpon>201610041406370_ksiazka2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610041419313_UzupelnienieSelectListNazwamiGatunkow.cs" />
+    <Compile Include="Migrations\201610041419313_UzupelnienieSelectListNazwamiGatunkow.Designer.cs">
+      <DependentUpon>201610041419313_UzupelnienieSelectListNazwamiGatunkow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Gatunek.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Produkt.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Ksiazka.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\RandomMovieViewModel.cs" />
+    <Compile Include="ViewModels\FormularzKlienta.cs" />
+    <Compile Include="ViewModels\FormularzKsiazki.cs" />
+    <Compile Include="ViewModels\RandomKsiazkaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom.css">
+      <DependentUpon>Custom.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Custom.min.css">
+      <DependentUpon>Custom.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Custom.scss" />
+    <Content Include="Content\Custom.css.map">
+      <DependentUpon>Custom.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -234,13 +325,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Movies\Random.cshtml" />
+    <Content Include="Views\Ksiazki\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Produkty\Produkty.cshtml" />
     <Content Include="Views\Home\Produkty.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Ksiazki\Index.cshtml" />
+    <Content Include="Views\Customer\FormularzKlienta.cshtml" />
+    <Content Include="Views\Ksiazki\FormularzKsiazki.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +344,50 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610032321360_init.resx">
+      <DependentUpon>201610032321360_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610032324169_DodanieNumeruDoModelu.resx">
+      <DependentUpon>201610032324169_DodanieNumeruDoModelu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610032341383_poprawki-w-modelu-czlonkowstwo.resx">
+      <DependentUpon>201610032341383_poprawki-w-modelu-czlonkowstwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610040900371_testowy-komentarz-danych-modelu.resx">
+      <DependentUpon>201610040900371_testowy-komentarz-danych-modelu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610040919550_przykladowe-dane.resx">
+      <DependentUpon>201610040919550_przykladowe-dane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610040944570_testowe-dane-2.resx">
+      <DependentUpon>201610040944570_testowe-dane-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041010338_dodanie-nowych-pol-customer.resx">
+      <DependentUpon>201610041010338_dodanie-nowych-pol-customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041057421_DodanieWyrazeniaRegularnegoDoImieniaKlienta.resx">
+      <DependentUpon>201610041057421_DodanieWyrazeniaRegularnegoDoImieniaKlienta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041103158_PoprawaWyrazenia.resx">
+      <DependentUpon>201610041103158_PoprawaWyrazenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041132312_wyrazenie-regularne.resx">
+      <DependentUpon>201610041132312_wyrazenie-regularne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041210235_poprawa.resx">
+      <DependentUpon>201610041210235_poprawa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041245434_test.resx">
+      <DependentUpon>201610041245434_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041406370_ksiazka2.resx">
+      <DependentUpon>201610041406370_ksiazka2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610041419313_UzupelnienieSelectListNazwamiGatunkow.resx">
+      <DependentUpon>201610041419313_UzupelnienieSelectListNazwamiGatunkow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

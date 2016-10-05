@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ASP.NET.Models.Ksiazka>
+@{
+    ViewBag.Title = "Ksiazki";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ksiazki</h2>
+<p>
+    @Html.ActionLink("Nowa Ksiazka", "Nowa", "Ksiazki", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Ksiazka</th>
+            <th>Gatunek</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ksiazka in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(ksiazka.Name, "Edytuj", "Ksiazki", new { id = ksiazka.Id }, null)</td>
+                <td>@ksiazka.Gatunek.Name</td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
+

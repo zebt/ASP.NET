@@ -1,0 +1,22 @@
+﻿$szary: #f2f2f2;
+$czerwony: #ff3232;
+
+
+/*** Strona Klient ***/
+.formularz {
+    background-color: $szary;
+    .form-group {
+        margin: 15px;
+    }
+    .checkbox {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+}
+.field-validation-error {
+    color: $czerwony;
+}
+.input-validation-error {
+    border: 1px solid $czerwony;
+}

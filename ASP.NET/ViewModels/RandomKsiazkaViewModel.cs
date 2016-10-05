@@ -6,10 +6,10 @@ using ASP.NET.Models;
 
 namespace ASP.NET.ViewModels
 {
-    public class RandomMovieViewModel
+    public class RandomKsiazkaViewModel
     {
         // 
-        public Movie Movie { get; set; }
+        public Ksiazka Ksiazka { get; set; }
         public List<Customer> Customers { get; set; }
     }
 }

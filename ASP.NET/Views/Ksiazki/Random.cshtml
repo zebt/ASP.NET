@@ -1,4 +1,4 @@
-﻿@model ASP.NET.ViewModels.RandomMovieViewModel
+﻿@model ASP.NET.ViewModels.RandomKsiazkaViewModel
 @{
     ViewBag.Title = "Randoms";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,10 +8,10 @@ var className = Model.Customers.Count > 0 ? "popular" : null;
 }
 
 
-<h2 class="@className">@Model.Movie.Name</h2>
+<h2 class="@className">@Model.Ksiazka.Name</h2>
 @if (Model.Customers.Count == 0)
 {
-    <text>No one has rented this movie before.</text>
+    <text>No one has rented this Ksiazka before.</text>
 }
 else 
 { 

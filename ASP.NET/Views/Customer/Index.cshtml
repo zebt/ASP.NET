@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Lista wypożyczających</h2>
+<p>
+    @Html.ActionLink("Nowy Wypożyczający", "Nowy", "Customer", null, new { @class = "btn btn-primary" })
+</p>
 
 @if (!Model.Any())
 {
@@ -16,14 +19,32 @@ else
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Customer</th>
+                <th>Imię i Nazwisko</th>
+                <th>Typ czytelnika</th>
+                <th>E-mail</th>
+                <th>Numer telefonu</th>
+                <th>Miasto</th>
+                <th>Kod Pocztowy</th>
+                <th>Ulica</th>
+                <th>Nr Mieszkania/Domu</th>
+
+             
             </tr>
         </thead>
         <tbody>
             @foreach (var customer in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)</td>
+                    <td>@Html.ActionLink(customer.Name, "Edytuj", "Customer", new { id = customer.Id }, null)</td>
+                    <td>@customer.MembershipType.Nazwa</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Numer</td>
+                    <td>@customer.Miasto</td>
+                    <td>@customer.Kod_pocztowy</td>
+                    <td>@customer.Ulica</td>
+                    <td>@customer.Dom</td>
+
+
 
                 </tr>
             }

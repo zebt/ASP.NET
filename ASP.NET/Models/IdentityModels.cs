@@ -20,6 +20,18 @@ namespace ASP.NET.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        // Dbset reprezentuje tabelę customer w bazie danych
+
+        /* Id, Name zostaly automatycznie pobrane z naszej klasy Customer, jednak wczesniej musielismy 
+                         * wykonac komende add-migration InitialModel -force w Packet Manager Console
+                         * krokiem poczatkowym bylo przejscie do modelu IdentityModels 
+                         */
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Ksiazka> Ksiazkas { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Gatunek> Gatunki { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
